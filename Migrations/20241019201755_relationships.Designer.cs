@@ -3,6 +3,7 @@ using EntityDatabase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EntityDatabase.Migrations
 {
     [DbContext(typeof(MusicOfHeartDbContext))]
-    partial class MusicOfHeartDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241019201755_relationships")]
+    partial class relationships
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,26 +43,6 @@ namespace EntityDatabase.Migrations
                     b.HasKey("BandId");
 
                     b.ToTable("Bands");
-
-                    b.HasData(
-                        new
-                        {
-                            BandId = 1,
-                            Country = "India",
-                            FirstName = "Coke Studio 5"
-                        },
-                        new
-                        {
-                            BandId = 2,
-                            Country = "Latin America",
-                            FirstName = "Veps spiders"
-                        },
-                        new
-                        {
-                            BandId = 3,
-                            Country = "Norway",
-                            FirstName = "Ola Nordman band"
-                        });
                 });
 
             modelBuilder.Entity("EntityDatabase.Models.Instrument", b =>
@@ -81,26 +64,6 @@ namespace EntityDatabase.Migrations
                     b.HasKey("InstrumentId");
 
                     b.ToTable("Instruments");
-
-                    b.HasData(
-                        new
-                        {
-                            InstrumentId = 1,
-                            Description = "Black color piano",
-                            InstrumentName = "Piano"
-                        },
-                        new
-                        {
-                            InstrumentId = 2,
-                            Description = "Indian traditional sitar",
-                            InstrumentName = "Sitar"
-                        },
-                        new
-                        {
-                            InstrumentId = 3,
-                            Description = "Electric gitar",
-                            InstrumentName = "Gitar"
-                        });
                 });
 
             modelBuilder.Entity("EntityDatabase.Models.Musician", b =>
@@ -136,35 +99,6 @@ namespace EntityDatabase.Migrations
                     b.HasIndex("InstrumentId");
 
                     b.ToTable("Musicians");
-
-                    b.HasData(
-                        new
-                        {
-                            MusicianId = 1,
-                            BandId = 1,
-                            FirstName = "Raju",
-                            InstrumentId = 2,
-                            LastName = "Kumar",
-                            Origin = "Indian musician"
-                        },
-                        new
-                        {
-                            MusicianId = 2,
-                            BandId = 2,
-                            FirstName = "Vinod",
-                            InstrumentId = 3,
-                            LastName = "Srivastav",
-                            Origin = "American indian musician"
-                        },
-                        new
-                        {
-                            MusicianId = 3,
-                            BandId = 2,
-                            FirstName = "Ram",
-                            InstrumentId = 1,
-                            LastName = "Gopal",
-                            Origin = "British Indian musician"
-                        });
                 });
 
             modelBuilder.Entity("EntityDatabase.Models.Musician", b =>

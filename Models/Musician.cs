@@ -12,5 +12,14 @@ namespace EntityDatabase.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Origin { get; set; }
+
+        // Navigation properties 
+
+        public int BandId { get; set; }
+        public Band Band { get; set; }
+
+        public int InstrumentId { get; set; }
+        public Instrument Instrument { get; set; }
+
     }
 }
